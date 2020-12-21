@@ -1,0 +1,61 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class="home">
+  <!-- 上月信息 -->
+  <view class="header">
+  <!-- 上 结余 -->
+  <view class="headerTop">
+    <view class="topTitle">本月结余</view>
+    <view class="topMoney">{{surplus.num}}.<text>{{surplus.decimal}}</text></view>
+  </view>
+  <!-- 下 支入 支出 -->
+  <view class="headerBtm">
+    <view class="headerItem">
+      <view class="btmTitle">本月收入</view>
+      <view class="btmMoney">{{monMoney.income}}</view>
+    </view>
+    <view class="line"></view>
+    <view class="headerItem">
+      <view class="btmTitle">本月支出</view>
+      <view class="btmMoney">{{monMoney.pay}}</view>
+    </view>
+  </view>
+  </view>
+  <!-- 下 日信息 -->
+  <view class="content">
+  <!-- 上 日信息 -->
+    <view class="dateBox">
+      <!-- z左边信息 -->
+      <view class="dateInfo">
+        <text>{{currentDate}}</text>
+        <text wx:if="{{isToday}}">今日</text>
+        <text>支入: {{dayMoney.income}}</text>
+        <text>支出: {{dayMoney.pay}}</text>
+      </view>
+      <!-- 右边 信息 -->
+      <picker mode="date" end="{{today}}" bindchange="selectDate" disabled="{{!isAuth}}">
+        <view class="moreBox">
+          <text class="yuan"></text>
+          <text class="yuan"></text>
+          <text class="yuan"></text>
+      </view>
+      </picker>
+    </view>
+  <!-- 下 记账列表 -->
+  <view class="bookingItem" wx:for="{{dayMsgData}}" wx:key="index" bindtap="navToDetail" data-id="{{item._id}}" >
+    <!-- 左 图标 -->
+      <view class="iconImg">
+        <image src="{{item.iconImg}}"></image>
+      </view>
+    <!-- 右 信息 -->
+      <view class="infoBox">
+        <!-- 左标题 备注 -->
+        <view class="infoText">
+          <view class="infiTitle">{{item.iconTitle}}</view>
+          <view class="infoComment">{{item.comment}}</view>
+        </view>
+      <!-- 右 金额 -->
+      <view class="infoMoney {{item.costType}}">{{item.costType == 'pay' ? '-':'+'}}￥{{item.money}}</view>
+      </view>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,128 @@
+/* miniprogram/pages/record/record.wxss */
+.header{
+  background: #FFDC5A;
+  height: 160rpx;
+}
+.content{
+  margin-top: -100rpx;
+  padding: 0 40rpx;
+}
+/*记账类型*/
+.bookingBox{
+  padding: 30rpx 0;
+  background: rgb(253, 251, 251);
+  border-radius: 60rpx;
+  /* height: 400rpx; */
+}
+.bookingBox .bookingTitle{
+  width: 300rpx;
+  height: 80rpx;
+  margin: 0 auto;
+  border-radius: 40rpx;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid #FFDC5A;
+}
+.bookingBox .bookingTitle .bookingItem{
+  width: 50%;
+  text-align: center;
+  line-height: 80rpx;
+ 
+}
+.bookingBox .bookingTitle .active{
+  background: #FFDC5A;
+}
+/*轮播图样式*/
+.bannerSwiper{
+  height: 400rpx;
+}
+.bannerIcon{
+  display: flex;
+  flex-wrap: wrap;
+}
+/*单个图标*/
+.iconItem{
+  width:25%;
+  margin-top: 30rpx;
+}
+.iconItem .iconImg{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto;
+}
+.iconItem .iconImg image{
+  width: 100%;
+  height: 100%;
+}
+.iconItem .iconName{
+  text-align: center;
+  font-size: 28rpx;
+  color: #B3B3B3;
+  margin-top: 10rpx;
+}
+/*激活图标样式*/
+.iconItem.active .iconImg{
+  transform: scale(1.2); /*缩放属性*/
+}
+.iconItem.active .iconName{
+  font-weight: bold;
+  color: #000;
+}
+/*账户选择*/
+.accountBox,.infoBox{
+  background: rgb(253, 251, 251);
+  padding: 0 20rpx 30rpx;
+  margin-top: 40rpx;
+  border-radius: 30rpx;
+}
+.accountBox .accountTitle{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #ECECEC;
+  font-weight: bold;
+}
+.accountBox .accountTitle text{
+  font-size: 40rpx;
+}
+.accountBox .accountItem{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.accountBox .accountItem view{
+  font-size: 24rpx;
+  background-color: #EDECEC;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 0 12rpx;
+  border-radius: 20rpx;
+  color: #B4B4B4;
+}
+.accountBox .accountItem .active{
+  background-color: #FFDC5A;
+  color: #fff;
+}
+/* 用户信息 */
+.infoItem{
+  display: flex;
+  padding-top: 30rpx;
+}
+.infoItem .infoTitle{
+  width: 80rpx;
+  font-weight: bold;
+}
+.infoItem .infoInp{
+  width: calc(100%-80rpx);
+}
+.infoItem .infoInp input{
+  width: 100%;
+}
+.saveBtn{
+  width: 70%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #FFDC5A;
+  margin: 60rpx auto;
+  border-radius: 20rpx;
+}

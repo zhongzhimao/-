@@ -1,0 +1,122 @@
+<view class="record">
+  <view class="header"></view>
+  <view class="content">
+    <!-- 记账类型 -->
+    <view class="bookingBox">
+      <!-- 标题 -->
+      <view class="bookingTitle">
+        <view class="bookingItem {{item.isAct ? 'active' : ''}}" 
+        wx:for="{{bookingTitle}}" 
+        wx:key="index" bindtap="titleTap" 
+        data-index="{{index}}"
+        data-type="bookingTitle"
+        >{{item.name}}</view>
+        <!-- <view class="bookingItem">支入</view> -->
+      </view>
+      <!-- 轮播图 -->
+      <view class="bookingBanner">
+        <!-- 支出 -->
+        <swiper class="bannerSwiper"
+          indicator-dots="{{true}}"
+          indicator-color="rgba(0, 0, 0, .3)"
+          indicator-active-color="#FFDC5A"
+          wx:if="{{bookingTitle[0].isAct}}"
+           >
+          <swiper-item class="bannerItem" wx:for="{{bannerType.pay}}" wx:key="index">
+            <view class="bannerIcon" >
+              <!-- 单个图标 -->
+              <view class="iconItem {{data.isAct ? 'active' : ''}}" 
+              wx:for="{{item}}" 
+              wx:for-index="id"
+              wx:for-item="data" 
+              wx:key="index"
+              bindtap="bannerTap"
+              data-type="pay"
+              data-index="{{index}}"
+              data-id="{{id}}"
+              >
+                <view class="iconImg">
+                  <image src="{{data.imgUrl}}"/>
+                </view>
+                <view class="iconName">{{data.title}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <!-- 收入 -->
+        <swiper class="bannerSwiper"
+         indicator-dots="{{true}}" 
+         indicator-color="rgba(0, 0, 0, .3)" 
+         indicator-active-color="#FFDC5A"
+         wx:else
+         >
+          <swiper-item class="bannerItem" wx:for="{{bannerType.income}}" wx:key="index" data-type="bookingTitle">
+            <view class="bannerIcon" >
+              <!-- 单个图标 -->
+              <view class="iconItem {{data.isAct ? 'active' : ''}}" 
+              wx:for="{{item}}" 
+              wx:for-index="id"
+              wx:for-item="data" 
+              wx:key="index"
+              bindtap="bannerTap"
+              data-type="income"
+              data-index="{{index}}"
+              data-id="{{id}}"
+              >
+                <view class="iconImg">
+                  <image src="{{data.imgUrl}}"/>
+                </view>
+                <view class="iconName">{{data.title}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+    <!-- 账户选择 -->
+    <!-- <view class="iconfont icon-qianbao"></view> -->
+    <view class="accountBox">
+      <!-- 上 标题 -->
+      <view class="accountTitle">
+        <view class="iconfont icon-qianbao">账户选择</view>
+      </view>
+      <!-- 下 选项 -->
+      <view class="accountItem">
+        <view class="{{item.isAct ? 'active' : ''}}" 
+        wx:for="{{accountData}}" wx:key="index"
+        bindtap="titleTap"
+        data-index="{{index}}"
+        data-type="accountData"
+        >{{item.name}}</view>
+      </view>
+    </view>
+    <!-- 用户填写信息 -->
+    <view class="infoBox">
+      <!-- 日期 -->
+      <picker mode="date"  end="{{today}}" bindchange="getInfo" data-type="date">
+        <view class="infoItem">
+          <view class="infoTitle">日期</view>
+          <view class="infoDate">{{info.date}}</view>
+        </view>
+      </picker>
+      <!-- 金额 -->
+      <view class="infoItem">
+        <view class="infoTitle">金额</view>
+        <view class="infoInp">
+          <input type="digit" placeholder="请输入记账金额" 
+          value="{{info.money}}" bindchange="getInfo" data-type="money"/>
+        </view>
+      </view>
+      <!-- 备注 -->
+      <view class="infoItem">
+        <view class="infoTitle">备注</view>
+        <view class="infoInp">
+          <input type="text" placeholder="请输入备注信息" 
+          value="{{info.comment}}" bindchange="getInfo" data-type="comment"/>
+        </view>
+      </view>
+    </view>
+    <!-- 按钮 -->
+    <view class="saveBtn" bindtap="saveMsgData">保存</view>
+  </view>
+</view>
